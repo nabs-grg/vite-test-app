@@ -13,7 +13,7 @@ import { requestTokenInterceptor } from './interceptors/requestInterceptors'
 import { useToken } from '@/hooks/useToken/useToken'
 
 const axios = Axios.create({
-  baseURL: 'https://staging-api.poweredbypercent.com/v1',
+  baseURL: import.meta.env.VITE_API_URL,
   headers: {
     'Content-Type': 'application/json'
   }

@@ -1,1 +1,1 @@
-export const apiUrl = 'https://staging-api.poweredbypercent.com/v1'
+export const apiUrl = import.meta.env.VITE_API_URL
