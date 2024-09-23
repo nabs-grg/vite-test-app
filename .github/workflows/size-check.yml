@@ -1,0 +1,32 @@
+name: 'Size Check'
+
+on:
+  pull_request:
+    paths:
+      - '**/*.ts'
+      - '**/*.tsx'
+      - '**/*.js'
+      - '**/*.css'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  size:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Compressed Size Action
+        uses: preactjs/compressed-size-action@v2
+        with:
+          pattern: './dist/**/*.{js,css,html,json}' # Ensure this matches your build folder
+          exclude: '{./dist/manifest.json,**/*.map,**/node_modules/**}'

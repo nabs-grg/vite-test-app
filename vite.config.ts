@@ -45,6 +45,9 @@ export default defineConfig({
       '@': path.resolve(__dirname, 'src')
       // buffer: 'buffer'
     }
+  },
+  build: {
+    outDir: 'dist' // Ensure this matches the directory you're passing in the GitHub Action
   }
 })
 
